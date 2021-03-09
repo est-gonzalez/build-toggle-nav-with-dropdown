@@ -8,6 +8,7 @@ body {
 
 .container {
     padding: 1rem;
+    position: relative;
 }
 
 /* *************** typography ***************  */
@@ -39,6 +40,7 @@ header {
 .menu-icon {
     width: 40px;
     text-align: center;
+    cursor: pointer;
 }
 
 header .flex-container {
@@ -46,11 +48,145 @@ header .flex-container {
     justify-content: space-between;
 }
 
+header a svg {
+    width: 15px;
+    height: 15px;
+}
+
+.main-menu li {
+    line-height: 85px;
+    margin: 0 25px;
+    border-bottom: 1px solid #e3eaf3;
+    white-space: nowrap;
+}
+
+.main-menu li:last-of-type {
+    border-bottom: none;
+}
+
+.main-menu a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #f89d70;
+    font-weight: 700;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.main-menu a:hover, 
+.main-menu a:active {
+    background-color: #e3eaf3;
+    border-radius: 5px;
+}
+
+.dropdown-menu a {
+    color: #00263e;
+    font-weight: 400;
+    text-transform: none;
+}
+
+.main-menu svg:last-of-type {
+    /* This only works inside a flex container */
+    margin-left: auto;
+}
+
+.main-menu svg:first-of-type {
+    margin-right: 10px;
+}
+
+/* ******** hide / show dropdowns with hover effect ******* */
+
+.dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+}
+
+.main-menu li:hover > .dropdown-menu {
+    max-height: initial;
+}
+
+/* ******* hide / show main menu with toggle icon ******** */
+nav {
+    max-height: 0;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    background-color: #fff;
+    width: 100%;
+    transition: all 0.7s ease;
+}
+
+.show-nav {
+    max-height: 100vh;
+}
+
 @media only screen and (min-width: 1300px) {
     .container {
         padding: 1rem 0;
         max-width: 75rem;
         margin: 0 auto;
-
+        display: flex;
+        position: initial;
+        line-height: 75px;
     }
+
+    .main-menu {
+        display: flex;
+        
+    }
+
+    .main-menu li {
+        text-align: center;
+        border-bottom: initial;
+    }
+
+    .main-menu > li:first-child {
+        margin-left: auto;
+    } 
+
+    .main-menu svg:last-of-type {
+        margin-left: 10px;
+    }
+    
+    .dropdown-menu {
+        background-color: #fff;
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+
+    ul.main-menu li:hover > ul {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    ul.main-menu li:focus-within > ul,
+    ul.main-menu li > ul:focus {
+        visibility: visible;
+        opacity: 1;
+        display: block;
+    }
+
+    nav {
+        max-height: 100vh;
+        position: initial;
+    }
+
+    .menu-icon {
+        display: none;
+    }
+
+    .main-menu a:hover, 
+    .main-menu a:active {
+    background-color: #fff;
+    text-decoration: underline;
 }
+}
+
+/* ************* TO DO BEFORE HANDING IN **************** */
+/* Finish off the wide screen verion of the menu.
+Copy and paste header to every page (not including the section title).
+Validate your code 
+Upload and submit a URL of the finished build. */
